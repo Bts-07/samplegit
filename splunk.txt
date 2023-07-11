@@ -1,0 +1,114 @@
+****SPLUNK
+*Search engine for log files
+*supports multiple use cases such as log consolidation(making something stronger and more solid) and retention,IT and application troubleshooting
+compliance reporting and security
+*provides central repo for log data from servers and devices through network
+*shows stastical and graphical views of log data.
+*provides access to data stores like Nosql and hadoop 
+
+
+****Splunk Visualization
+index=uberagent sourcetype=uber Agent:Process:ProcessStartup | timechart avg(Startup TimeMs) by Name
+     |                 ---------------------------
+     |                                           |
+shows which index splunk should be looking at   defines the type of data we are going to look at
+
+**  Agent:Process:ProcessStartup---filter the log data
+**  timechart --to create the visualization
+**  avg-it will take avg of all startuptime in timeframe and plot it in different series by name
+
+---Splunk is extensible
+*can source data from
+ *SNMP
+ *syslog
+ *windows event
+ *many more sources
+
+**provide and display data in the form of dashboards and other visualizations.
+
+--splunk is scalable
+*stores data directly in the file system
+*no need for complex database backend
+*can set up with many servers to cover requirements and the data will be evenly distributed
+*search speed increases with installed nodes
+
+---splunk index is dynamic
+*no schemas to define
+*can stsrt accepting log data as soon as installed and running
+*data fields in logs are extracted at query time and most log formats are easily recognized
+*unrecognized log formats can be specified via configuration
+
+
+---------------Splunk enterprise Licensing
+*fully featured after install but limited to indexing upto 500 MB per day
+*free trail period for 60 days
+*After free trail expires,choosse between splunk free or purchase splunk enterprise license.
+
+---splunk free License
+*linited to 500 mb per day
+*clusters are not possible
+*no alerting/monitoring features
+*all users have full access to splunk free features and data
+*no TCP/HTTP forwarding tools
+
+---Forwarder License
+**Forward License-can forward,but not index -unlimited data,enables splunk security feature license.
+---Beta License 
+**Beta license-enables running splunk beta releases,compatible with beta releases
+
+--------------------splunk installation
+*do/opt/splunk/bin/splunk start -starting splunk
+*docs.splunk.com
+*wget command
+*tar xvzf
+*In download file go to services and install splunkd in it.
+*In localhost by default splunk runs on 8000
+*Set up local system while installation
+*username:admin
+*password:password
+*later change the admin password to new password 
+*Select search and reporting option.
+
+
+
+---------------Install in ec2 Linux machine
+spunk.com->products->free trail downloads(left side)->splunk enterprose(get my free trail)
+->In linux install .tgz file->copy wget command in ec2 instance wget -O splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.4/linux/splunk-9.0.4-de405f4a7979-Linux-x86_64.tgz"
+-> ls->copy splunk version->command(tar xvzf copy splunk version) 
+->cd splunk
+->cd bin
+->./splunk start-For starting the splunk
+username :admin
+password:Raghavulu123@
+change the security groups
+->Now copy the public ip address with 8000 port
+->for one server there will be only one OneAgent
+
+
+
+
+
+
+
+---------------------15/3
+*main use of splunk
+1.query-we have to write query
+2.calculate-do calculation also
+3.transform-raw data to readable format
+4.organize-apply filters,raw data,log files,services organization
+5.visualize-data can visualize in pie chart
+6.manipulation-create own data
+
+***********searching and reporting
+*install splunk using agent
+*data is passed in form index
+*create alerts(orders<1000-notification is send via email,slag)
+*configure alerts
+*dashboard-to monitor
+
+
+*splunk is going to collect logs based on log adding condition
+based on condition splunk is going to trigger the alert.
+
+**splunk real time example-order management
+***by using sop we can 
